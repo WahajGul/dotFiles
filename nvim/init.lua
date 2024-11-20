@@ -33,7 +33,9 @@ require('lazy').setup {
 }
 
 -- Use system clipboard
+-- vim.opt.clipboard = 'unnamedplus'
 vim.opt.clipboard = 'unnamedplus'
+--set clipboard=unnamedplus
 
 -- Set up CopyQ as the clipboard manager
 -- vim.g.clipboard = {
