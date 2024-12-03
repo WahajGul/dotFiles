@@ -124,6 +124,15 @@ bindsym Mod4+a focus parent
 # move the currently focused window to the scratchpad
 bindsym Mod4+Shift+minus move scratchpad
 
+bindsym Mod4+g exec i3-msg split vertical &&  i3-msg focus up &&  i3-msg split horizontal && i3-msg focus down && i3-msg focus left &&  i3-msg split horizontal && i3-msg focus right          
+    
+   
+
+    # Open the second column by splitting vertically
+         
+
+    # Move focus to the third window (left-bottom corner) and split horizontally
+        
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym Mod4+minus scratchpad show
@@ -250,6 +259,7 @@ set $crust #11111b
 
 exec_always --no-startup-id ~/.config/polybar/launcher.sh
 exec_always --no-startup-id nitrogen --restore &
+exec_always --no-startup-id ~/git/xborder/xborders -c ~/.config/xborders/config.json & 
 exec_always --no-startup-id picom --backends-experimental & 
 # exec_always --no-startup-id polybar 
 
@@ -266,9 +276,9 @@ exec --no-startup-id echo "Colors.conf loaded"
 # Please remove the following exec line:
 #######################################################################
 exec i3-config-wizard
-default_border pixel 1
-default_floating_border pixel 2
-for_window [class=".*"] border pixel 2
+# default_border pixel 3
+# default_floating_border pixel 2
+for_window [class=".*"] border pixel 0
 focus_follows_mouse no
 
 # target                 title     bg    text   indicator  border

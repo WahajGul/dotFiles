@@ -3,18 +3,19 @@ general.import = [
   # "~/.config/alacritty/catppuccin-latte.toml"
   # "~/.config/alacritty/catppuccin-frappe.toml"
   # "~/.config/alacritty/catppuccin-macchiato.toml"
-  # "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
   # "~/.config/alacritty/themes/tokyo-night.toml"
   # "~/.config/alacritty/themes/tokyo-night-storm.toml"
   # "~/.config/alacritty/themes/tokyonight_day.toml"
   # "~/.config/alacritty/themes/tokyonight_moon.toml"
   # "~/.config/alacritty/themes/tokyonight_night.toml"
-  # "~/.config/alacritty/themes/tokyonight_storm.toml"
-  "~/.config/alacritty/themes/cyberpunk-neon.toml"
+  # "~/.config/alacritty/themes/tokyo-night-storm.toml"
+  # "~/.config/alacritty/themes/cyberpunk-neon.toml"
 ]
-
+[env]
+TERM = "xterm-256color"
 [window]
-decorations = "None"
+decorations = "none"
 opacity = 0.8
 
 [window.padding]
@@ -22,10 +23,13 @@ x = 10
 y = 10
 
 [font]
-size = 11.0
+size = 12.0
 
+[font.bold]
+family = "0xProto Nerd Font "
+style = "Bold"
 [font.normal]
-family = "0xProto Nerd Font Mono"
+family = "0xProto Nerd Font "
 style = "Regular"
 
 [cursor.style]

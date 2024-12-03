@@ -1,12 +1,16 @@
 # vim:fileencoding=utf-8:foldmethod=marker
+# Set the prompt bar's background color
+prompt_background #ffff00
 
+# Set the prompt bar's foreground color
+prompt_foreground #ffffff
 #: Fonts {{{
 
 #: kitty has very powerful font management. You can configure
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-# font_family      monospace
+font_family      0xProto Nerd Font Mono
 # bold_font        auto
 # italic_font      auto
 # bold_italic_font auto
@@ -26,6 +30,48 @@
 
 # force_ltr no
 
+# Selection Colors
+selection_foreground     #ebdbb2
+selection_background     #d65d0e
+
+# Window border Colors
+active_border_color      #8ec07c
+inactive_border_color    #665c54
+
+# Kitty tabs colors 
+active_tab_foreground    #ebdbb2
+active_tab_background    #458588
+inactive_tab_foreground  #ebdbb2
+inactive_tab_background  #8ec07c
+
+# Basic color
+background               #1d2021
+foreground               #ebdbb2
+
+# 16 main colors
+color0                   #3c3836
+color1                   #cc241d
+color2                   #98971a
+color3                   #d79921
+color4                   #458588
+color5                   #b16286
+color6                   #689d6a
+color7                   #a89984
+color8                   #928374
+color9                   #fb4934
+color10                  #b8bb26
+color11                  #fabd2f
+color12                  #83a598
+color13                  #d3869b
+color14                  #8ec07c
+color15                  #fbf1c7
+
+# Cursor colors
+cursor                   #bdae93
+cursor_text_color        #665c54
+
+# Url color
+url_color                #458588
 #: kitty does not support BIDI (bidirectional text), however, for RTL
 #: scripts, words are automatically displayed in RTL. That is to say,
 #: in an RTL script, the words "HELLO WORLD" display in kitty as
@@ -734,7 +780,7 @@
 
 #: Terminal bell {{{
 
-# enable_audio_bell yes
+enable_audio_bell no
 
 #: The audio bell. Useful to disable it in environments that require
 #: silence.
@@ -1375,7 +1421,7 @@
 #: interactive mode and reads its startup rc files. Environment
 #: variables are expanded in this setting.
 
-# editor .
+editor nvim
 
 #: The terminal based text editor (such as vim or nano) to use when
 #: editing the kitty config file or similar tasks.
@@ -2072,7 +2118,29 @@
 #: }}}
 
 #: Window management {{{
+# window management 
+map ctrl+shift+enter new_window
+map ctrl+shift+] next_window
+map ctrl+shift+[ previous_window
 
+# layout management
+map ctrl+shift+l next_layout
+map ctrl+alt+r goto_layout tall
+map ctrl+alt+s goto_layout stack
+
+# tab bar customization
+tab_bar_style powerline
+tab_powerline_style slanted
+tab_bar_edge bottom
+tab_bar_align left
+active_tab_font_style   bold
+inactive_tab_font_style normal
+
+# tab management
+map ctrl+shift+t new_tab
+map ctrl+shift+right next_tab
+map ctrl+shift+left previous_tab
+map ctrl+shift+q close_tab
 #: New window
 
 # map kitty_mod+enter new_window
@@ -2598,3 +2666,9 @@
 #: }}}
 
 #: }}}
+
+
+# BEGIN_KITTY_THEME
+# Cobalt Neon
+include current-theme.conf
+# END_KITTY_THEME

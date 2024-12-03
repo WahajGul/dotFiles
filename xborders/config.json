@@ -1,0 +1,11 @@
+{
+  "border_radius": 3,
+  "border_width": 2,
+  "border_rgba": "#b4befe",
+  "border_mode": "outside",
+  "smart_hide_border": true,
+  "positive_x_offset": 0,
+  "negative_x_offset": 0,
+  "positive_y_offset": 0,
+  "negative_y_offset": 0
+}
