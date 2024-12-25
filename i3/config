@@ -124,7 +124,8 @@ bindsym Mod4+a focus parent
 # move the currently focused window to the scratchpad
 bindsym Mod4+Shift+minus move scratchpad
 
-bindsym Mod4+g exec i3-msg split vertical &&  i3-msg focus up &&  i3-msg split horizontal && i3-msg focus down && i3-msg focus left &&  i3-msg split horizontal && i3-msg focus right          
+bindsym Mod4+g exec kitty
+bindsym Mod4+Shift+g exec bash ~/git/rofi-wifi-menu/rofi-wifi-menu.sh
     
    
 
