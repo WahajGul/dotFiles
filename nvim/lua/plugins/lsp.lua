@@ -162,7 +162,7 @@ return {
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      tsserver = {},
+      -- tsserver = {},
       htmlhint = {},
       -- ruff = {},
       pylsp = {
@@ -183,6 +183,7 @@ return {
       },
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       cssls = {},
+      typescript_language_server = {},
       tailwindcss = {},
       dockerls = {},
       sqlls = {},
