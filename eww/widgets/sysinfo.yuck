@@ -1,0 +1,119 @@
+(defwidget sys_tray[value text ?class ?labelclass]
+
+ (circular-progress :value value
+        :class "radial ${class}"
+        :start-angle 0
+        :thickness 12
+        (label :text text
+            :class "radial-label ${labelclass}"
+            :limit-width 2
+            :show_truncated false
+            :wrap false
+            :angle 0.0)))            
+
+
+(defwidget circular-bat[]
+        (box	:spacing 0
+            	:orientation "h"
+            	:space-evenly false
+				:halign "center"
+        (box 	:spacing 0
+            	:orientation "v"
+            	:space-evenly false
+            	:class "radial-bat-box"
+                :tooltip {battery-remaining}
+     (label :text "${battery-remaining}%" :style "font-size:30px;") 
+(circular-progress  :value {battery-remaining} 
+        :class "radial-bat-bar" 
+        :start-angle 0 
+        :thickness 10
+         (label :text "󰂄"
+            :class "radial-label-bat"
+            :limit-width 2
+            :show_truncated false
+            :wrap false
+            :angle 0.0
+             :style "padding:20px;font-size:30px;")
+
+      )				
+
+		)
+	)
+)
+
+(defwidget circular-cpu[]
+        (box	:spacing 0
+            	:orientation "h"
+            	:space-evenly false
+				:halign "center"
+        (box 	:spacing 0
+            	:orientation "v"
+            	:space-evenly false
+            	:class "radial-cpu-box"
+                :tooltip {cpu-usage}
+
+     (label :text "${cpu-usage}%" :style "font-size:30px;") 
+(circular-progress  :value {cpu-usage} 
+        :class "radial-cpu-bar" 
+        :start-angle 0 
+        :thickness 10
+         (label :text ""
+            :class "radial-label-cpu"
+            :limit-width 2
+            :show_truncated false
+            :wrap false
+            :angle 0.0
+             :style "padding:20px;font-size:15px;")
+
+      )				
+
+		)
+	)
+)
+
+
+(defwidget circular-ram[]
+        (box	:spacing 0
+            	:orientation "h"
+            	:space-evenly false
+				:halign "center"
+        (box 	:spacing 0
+            	:orientation "v"
+            	:space-evenly false
+            	:class "radial-ram-box"
+                :tooltip {cpu-usage}
+
+     (label :text "${ram-usage}%" :style "font-size:30px;") 
+(circular-progress  :value {ram-usage} 
+        :class "radial-ram-bar" 
+        :start-angle 0 
+        :thickness 10
+         (label :text ""
+            :class "radial-label-ram"
+            :limit-width 2
+            :show_truncated false
+            :wrap false
+            :angle 0.0
+             :style "padding:20px;font-size:15px;")
+
+      )				
+
+		)
+	)
+)
+
+
+(defwidget systray_all[] 
+(box :class "container" :orientation "h" :space-evenly "true" 
+
+(box :class "child1" (circular-bat))
+    (box :class "child2" (circular-cpu))
+    (box :class "child3" (circular-ram))
+  )
+)
+(defwindow systray_all
+			    :geometry (geometry :x "10px" :y "270px" :width "300px" :height "135px")
+ 
+   
+			     			(systray_all)	)
+
