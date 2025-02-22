@@ -153,7 +153,9 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       clangd = {},
+      -- roslyn = {},
       -- gopls = {},
+      -- csharpier = {},
       -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -223,7 +225,20 @@ return {
     --    :Mason
     --
     --  You can press `g?` for help in this menu.
-    require('mason').setup()
+    require('mason').setup {
+      providers = {
+        'mason.providers.client',
+        'mason.providers.registry-api',
+      },
+      registries = {
+        'github:mason-org/mason-registry', -- the default core registry
+        -- 'github:Crashdummyy/mason-registry',
+        'github:seblyng/roslyn.nvim', -- add your custom roslyn registry here
+      },
+      -- github = {
+      --   download_url_template = 'https://github.com/%s/releases/download/%s/%s',
+      -- },
+    }
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.

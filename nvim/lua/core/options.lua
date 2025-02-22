@@ -47,3 +47,5 @@ vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel = 99 -- Open all folds by default
 vim.o.foldenable = true -- Enable folding
 vim.o.foldtext = "getline(v:foldstart) .. ' ... ' .. trim(getline(v:foldend))"
+
+vim.env.PATH = vim.env.PATH .. ':/usr/bin/dotnet'

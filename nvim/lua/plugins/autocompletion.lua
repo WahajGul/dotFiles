@@ -70,6 +70,9 @@ return { -- Autocompletion
     cmp.setup {
       snippet = {
         expand = function(args)
+          --to USe Ulti Snippets uncomment below line and comment luasnip line
+          -- vim.fn['UltiSnips#Anon'](args.body)
+          -- for Lua Snip use uncomment below line and comment above line
           luasnip.lsp_expand(args.body)
         end,
       },
@@ -147,6 +150,7 @@ return { -- Autocompletion
         end, { 'i', 's' }),
       },
       sources = {
+        { name = 'render-markdown' },
         {
           name = 'lazydev',
           -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it

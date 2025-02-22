@@ -41,4 +41,8 @@ return {
       require('colorizer').setup()
     end,
   },
+  {
+    'elkowar/yuck.vim',
+    ft = 'yuck',
+  },
 }

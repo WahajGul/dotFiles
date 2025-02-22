@@ -30,26 +30,11 @@ require('lazy').setup {
   require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.nvim-ts-autotag',
+  require 'plugins.render-markdown',
+  require 'plugins.roslyn-nvim',
+  -- require 'plugins.easy-dotnet',
 }
 
 -- Use system clipboard
 -- vim.opt.clipboard = 'unnamedplus'
 vim.opt.clipboard = 'unnamedplus'
---set clipboard=unnamedplus
-
--- Set up CopyQ as the clipboard manager
--- vim.g.clipboard = {
---   name = 'copyq',
---   copy = {
---     ['+'] = 'flatpak run com.github.hluk.copyq copy',
---     ['*'] = 'flatpak run com.github.hluk.copyq add ',
---   },
---   paste = {
---     ['+'] = 'flatpak run com.github.hluk.copyq paste',
---     ['*'] = 'flatpak run com.github.hluk.copyq paste',
---   },
---   cache_enable = 1,
--- }
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
