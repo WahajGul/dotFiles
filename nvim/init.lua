@@ -31,8 +31,9 @@ require('lazy').setup {
   require 'plugins.comment',
   require 'plugins.nvim-ts-autotag',
   require 'plugins.render-markdown',
-  require 'plugins.roslyn-nvim',
-  -- require 'plugins.easy-dotnet',
+  -- require 'plugins.roslyn-nvim', --csharp plugin (uncomment registry in lsp.lua to use this)
+  -- require 'plugins.easy-dotnet', --csharp / dotnet plugin (uncomment both to use csharp lsp)
+  require 'plugins.nvim-java', --java plugin
 }
 
 -- Use system clipboard

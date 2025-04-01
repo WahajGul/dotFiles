@@ -1,0 +1,75 @@
+
+;  (defwidget blur_full [] 
+;       (box :orientation "v" :space-evenly "true"))
+; (defwindow blur_full 
+; 			    :geometry (geometry :x "0px" :y "0px" :width "100%" :height "100%")
+;       							(blur_full))
+(include "./widgets/sysinfo.yuck")
+(defwidget time_side [] 
+      (box :orientation "v" :space-evenly "false" 
+        (box :orientation "h" :class "time-side" :space-evenly "false" 
+          (box :class "hour-side" {hour})
+          (box :class "minute-side" {min}))
+        (box :class "day-side" {day})))
+
+   (defwidget smol_calendar [] 
+      (box :orientation "v" :space-evenly "false" 
+        (box :class "number_day" {number_day})
+        (box :class "month" {month})))
+
+
+(defwidget power_button []
+ (box :orientation "v" :space-evenly "false" 
+(button :class "power_menu"  :onclick "~/.config/rofi/scripts/powermenu_t1" "")
+    
+))
+
+
+(defwidget weather []
+ (box :orientation "v" :space-evenly "false" 
+
+(label :text {weatherDesc} :style "background-color:black;font-size:50px;")
+    
+    
+))
+
+(defwindow weather_info
+           :geometry (geometry :x "95px"
+                               :y "45px"
+                               :width "215px"
+                               :height "80px"
+                               )
+  
+          (weather))
+
+ (defwindow time_side 
+			    :geometry (geometry :x "10px" :y "130px" :width "300px" :height "135px")
+			     				(time_side))
+  (defwindow smol_calendar 
+			    :geometry (geometry :x "10px" :y "45px" :width "80px" :height "80px")
+			     				(smol_calendar))
+
+     ;; Date vars
+    (defpoll number_day :interval "5h"  "date \"+%d\"")
+    (defpoll month :interval "10h"  "date \"+%b\"")
+    (defpoll min :interval "10s"  "date \"+%M\"")
+    (defpoll hour :interval "10s"  "date \"+%H\"")
+    (defpoll day :interval "15h"  "~/.config/eww/scripts/getday")
+    (defpoll month_full :interval "15h"  "date \"+%B\"")
+    (defpoll year_full :interval "15h"  "date \"+%Y\"")
+  ;; Battery/ram/cpu charge vars
+    (defpoll battery-remaining :interval "5s"  "cat /sys/class/power_supply/BAT0/capacity")
+    (defpoll bat-icon :interval "5s"  "~/.config/eww/scripts/battery")
+
+;; Systray Variables
+(defpoll ram-usage 			:interval "1s"  "~/.config/eww/scripts/sysinfo --mem")
+(defpoll cpu-usage 			:interval "1s"  "~/.config/eww/scripts/sysinfo --cpu")
+(defpoll battery-capacity 	:interval "1s"  "~/.config/eww/scripts/sysinfo --bat")
+(defpoll current-brightness :interval "1s"  "~/.config/eww/scripts/sysinfo --bri")
+(defpoll current-volume 	:interval "1s"  "~/.config/eww/scripts/sysinfo --vol")
+
+
+;; Weather Vars
+
+(defpoll weatherDesc :interval "1s" "echo $(~/.config/eww/scripts/getWeatherData --desc)" )
+(defpoll weatherTemp :interval "1s" "echo $(./scripts/getWeatherData --temp)" )

@@ -153,6 +153,7 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       clangd = {},
+      jdtls = {},
       -- roslyn = {},
       -- gopls = {},
       -- csharpier = {},
@@ -233,7 +234,7 @@ return {
       registries = {
         'github:mason-org/mason-registry', -- the default core registry
         -- 'github:Crashdummyy/mason-registry',
-        'github:seblyng/roslyn.nvim', -- add your custom roslyn registry here
+        -- 'github:seblyng/roslyn.nvim', -- add your custom roslyn registry here
       },
       -- github = {
       --   download_url_template = 'https://github.com/%s/releases/download/%s/%s',
