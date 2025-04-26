@@ -1,0 +1,187 @@
+
+# SwayFX Config (Wayland + Animations)
+
+# Font
+font pango:JetBrainsMono Nerd Font Mono 14
+
+# Gaps (SwayFX handles these)
+gaps inner 5
+gaps outer 1
+
+# these two lines removes the titlebar
+default_border pixel 2
+default_floating_border pixel 2
+
+# scaling 
+output eDP-1 scale 1.3
+
+# Set modifier key (Mod4 = Super/Windows)
+set $mod Mod4
+
+# Move windows by dragging with Mod + left mouse
+floating_modifier Mod4
+
+# key swap
+
+input * xkb_options "ctrl:nocaps"
+
+# Terminal
+bindsym $mod+Return exec kitty
+
+# Kill window
+bindsym $mod+Shift+q kill
+
+# Application launcher (Wayland-friendly rofi)
+bindsym $mod+d exec ~/.config/rofi/scripts/launcher_t7
+
+# Focus movement
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Move windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Splits
+bindsym $mod+c split h
+bindsym $mod+v split v
+
+# Layouts
+bindsym $mod+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Floating
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# EWW sidebar
+bindsym $mod+b exec eww open-many smol_calendar time_side systray_all
+bindsym $mod+Shift+b exec $HOME/personalScripts/toggleEwwSideBar.sh
+
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused window to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Reload/Restart/Exit
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exit
+
+# Resize mode
+mode "resize" {
+  bindsym h resize shrink width 10px
+  bindsym j resize grow height 10px
+  bindsym k resize shrink height 10px
+  bindsym l resize grow width 10px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Startup Apps (Wayland-compatible)
+exec_always --no-startup-id swaybg -i ~/Pictures/Wallpapers/keyboardWallpaper.png --mode fill
+# exec_always --no-startup-id waybar
+exec_always --no-startup-id nm-applet
+# exec_always --no-startup-id gnome-keyring-daemon --start --components=secrets
+
+# Audio Control (assumes pipewire or pulseaudio with pactl)
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+
+# Brightness control
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+
+# User Apps
+
+
+# Screenshot selected area to swappy with Shift + Print
+bindsym Shift+Print exec grim -g "$(slurp)" - | swappy -f -
+
+# Screenshot full screen to swappy with Print
+bindsym Print exec grim - | swappy -f -
+
+
+
+# Borders & Focus
+client.focused           #b4befe #1e1e2e #cdd6f4 #f5e0dc #b4befe
+client.unfocused         #6c7086 #1e1e2e #cdd6f4 #f5e0dc #6c7086
+
+# Input config (see next section for touchpad)
+
+
+# disable mouse focus 
+focus_follows_mouse no
+
+bar {
+	swaybar_command waybar
+}
+
+
+
+## blur ##
+corner_radius  5
+blur enable
+blur_xray disable
+blur_passes 1
+blur_radius 5
+layer_effects "waybar" shadows enable; corder_radius 0 ; blur disable
+
+
+
+# lib input rules
+input type:touchpad {
+    natural_scroll enabled
+  tap enabled
+    tap_button_map lrm
+    dwt enabled
+    dwtp enabled
+}
+
