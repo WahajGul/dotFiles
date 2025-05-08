@@ -125,7 +125,7 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id swaybg -i ~/Pictures/Wallpapers/keyboardWallpaper.png --mode fill
 # exec_always --no-startup-id waybar
 exec_always --no-startup-id nm-applet
-# exec_always --no-startup-id gnome-keyring-daemon --start --components=secrets
+exec_always --no-startup-id gnome-keyring-daemon --start --components=secrets
 
 # Audio Control (assumes pipewire or pulseaudio with pactl)
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%

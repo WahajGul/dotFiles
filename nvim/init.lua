@@ -1,6 +1,6 @@
-require 'core.options' -- Load general options
-require 'core.keymaps' -- Load general keymaps
-require 'core.snippets' -- Custom code snippets
+require 'core.options'
+require 'core.snippets'
+require 'core.keymaps'
 
 -- Set up the Lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -15,27 +15,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup {
-  require 'plugins.neotree',
-  require 'plugins.colortheme',
+  require 'plugins.tree-sitter',
+  require 'plugins.neo-tree',
+  -- require 'plugins.oil-nvim',
+  require 'plugins.snacks',
+  require 'plugins.autocompletion',
+  require 'plugins.colorscheme',
   require 'plugins.bufferline',
   require 'plugins.lualine',
-  require 'plugins.treesitter',
-  require 'plugins.telescope',
-  require 'plugins.lsp',
-  require 'plugins.autocompletion',
-  require 'plugins.none-ls',
-  require 'plugins.gitsigns',
-  require 'plugins.alpha',
-  require 'plugins.indent-blankline',
   require 'plugins.misc',
-  require 'plugins.comment',
-  require 'plugins.nvim-ts-autotag',
-  require 'plugins.render-markdown',
-  -- require 'plugins.roslyn-nvim', --csharp plugin (uncomment registry in lsp.lua to use this)
-  -- require 'plugins.easy-dotnet', --csharp / dotnet plugin (uncomment both to use csharp lsp)
-  require 'plugins.nvim-java', --java plugin
+  require 'plugins.nvim-jdtls',
+  require 'plugins.lsp-config',
+  -- require 'plugins.java',
 }
-
--- Use system clipboard
--- vim.opt.clipboard = 'unnamedplus'
-vim.opt.clipboard = 'unnamedplus'
