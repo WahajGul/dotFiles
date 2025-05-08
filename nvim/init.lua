@@ -23,8 +23,9 @@ require('lazy').setup {
   require 'plugins.colorscheme',
   require 'plugins.bufferline',
   require 'plugins.lualine',
+  require 'plugins.nvim-java',
   require 'plugins.misc',
-  require 'plugins.nvim-jdtls',
-  require 'plugins.lsp-config',
+  -- require 'plugins.nvim-jdtls',
+  require 'plugins.kickStart-lsp',
   -- require 'plugins.java',
 }

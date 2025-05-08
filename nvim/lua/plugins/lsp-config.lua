@@ -2,7 +2,7 @@
 return {
   -- Mason package manager
   {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     config = function()
       require('mason').setup {
         ui = {
@@ -16,16 +16,6 @@ return {
     end,
   },
 
-  -- Mason-nvim-dap for debug adapters
-  -- {
-  --     'jay-babu/mason-nvim-dap.nvim',
-  --     config = function()
-  --         require('mason-nvim-dap').setup {
-  --             ensure_installed = { 'java-debug-adapter', 'java-test' },
-  --         }
-  --     end,
-  -- },
-  --
   -- LSP Configuration
   {
     'neovim/nvim-lspconfig',
@@ -42,6 +32,32 @@ return {
       -- Enable the new vim.lsp.enable feature (Neovim 0.10+)
       -- if vim.fn.has 'nvim-0.10' == 1 and vim.lsp.enable then
       --   vim.lsp.enable()
+      -- end
+      --
+      -- Special server configurations
+      -- local server_configs = {
+      --   ['jdtls'] = function()
+      --     lspconfig.jdtls.setup {
+      --       capabilities = capabilities,
+      --       filetypes = { 'java' },
+      --       cmd = { 'jdtls' },
+      --       settings = {
+      --         java = {
+      --           project = {
+      --             referencedLibraries = {
+      --               '/home/wahaj/git/javafx-sdk-24.0.1/lin/*.jar',
+      --             },
+      --           },
+      --         },
+      --       },
+      --     }
+      --   end,
+      --
+      --   -- Add other server-specific configurations here if needed
+      -- }
+      --
+      -- for server_name, setup_func in pairs(server_configs) do
+      --   setup_func()
       -- end
 
       -- Common LSP setup function
@@ -60,14 +76,6 @@ return {
       --   },
       -- }
 
-      require('mason-tool-installer').setup {
-        -- Install these linters, formatters, debuggers automatically
-        ensure_installed = {
-          'java-debug-adapter',
-          'java-test',
-        },
-      }
-
       -- Configure each LSP server (excluding jdtls which will be handled by nvim-java)
       local servers = {
         'lua_ls',
@@ -80,13 +88,25 @@ return {
         'dockerls',
         'emmet_language_server',
         'jsonls',
-        'jdtls', -- is intentionally excluded here, handled by nvim-java plugin
+        -- 'jdtls', -- is intentionally excluded here, handled by nvim-java plugin
+      }
+
+      require('mason-tool-installer').setup {
+        -- Install these linters, formatters, debuggers automatically
+        ensure_installed = {
+          'java-debug-adapter',
+          'java-test',
+          servers,
+        },
       }
 
       -- Setup each server
       for _, server in ipairs(servers) do
         setup_lsp(server)
       end
+
+      require('java').setup()
+      require('lspconfig').jdtls.setup {}
 
       vim.lsp.enable(servers)
       -- Configure diagnostics
