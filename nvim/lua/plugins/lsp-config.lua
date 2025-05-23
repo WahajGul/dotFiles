@@ -83,7 +83,7 @@ return {
         'cssls',
         'sqlls',
         'pylsp',
-        'html',
+        'html_ls',
         'clangd',
         'dockerls',
         'emmet_language_server',
@@ -133,6 +133,8 @@ return {
           prefix = '',
         },
       }
+
+
 
       vim.diagnostic.config(default_diagnostic_config)
 

@@ -1,6 +1,7 @@
 require 'core.options'
 require 'core.snippets'
 require 'core.keymaps'
+-- require 'core.autocmds'
 
 -- Set up the Lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -23,9 +24,10 @@ require('lazy').setup {
   require 'plugins.colorscheme',
   require 'plugins.bufferline',
   require 'plugins.lualine',
-  require 'plugins.nvim-java',
+  -- require 'plugins.nvim-java',
+  require 'plugins.nvim-jdtls',
   require 'plugins.misc',
-  -- require 'plugins.nvim-jdtls',
   require 'plugins.kickStart-lsp',
-  -- require 'plugins.java',
+  require 'plugins.null',
+  require 'plugins.notes',
 }

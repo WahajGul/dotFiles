@@ -2,10 +2,10 @@
 # SwayFX Config (Wayland + Animations)
 
 # Font
-font pango:JetBrainsMono Nerd Font Mono 14
+font pango:JetBrainsMonoNL Nerd Font 15
 
 # Gaps (SwayFX handles these)
-gaps inner 5
+gaps inner 1
 gaps outer 1
 
 # these two lines removes the titlebar
@@ -122,10 +122,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Startup Apps (Wayland-compatible)
-exec_always --no-startup-id swaybg -i ~/Pictures/Wallpapers/keyboardWallpaper.png --mode fill
+# exec_always --no-startup-id killall swaybg 
+exec_always --no-startup-id swaybg -i ~/Pictures/Wallpaper-Bank/mountains.jpg
 # exec_always --no-startup-id waybar
 exec_always --no-startup-id nm-applet
-exec_always --no-startup-id gnome-keyring-daemon --start --components=secrets
+# exec_always --no-startup-id gnome-keyring-daemon --start --components=secrets
 
 # Audio Control (assumes pipewire or pulseaudio with pactl)
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
@@ -173,6 +174,9 @@ blur_xray disable
 blur_passes 1
 blur_radius 5
 layer_effects "waybar" shadows enable; corder_radius 0 ; blur disable
+# layer_effects "rofi" shadows enable; corder_radius 0 ; blur enable
+
+for_window [class="org-example-App"] floating enable;
 
 
 
@@ -185,3 +189,5 @@ input type:touchpad {
     dwtp enabled
 }
 
+
+include /etc/sway/config.d/*

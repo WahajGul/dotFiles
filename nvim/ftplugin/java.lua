@@ -1,0 +1,68 @@
+local config = {
+  cmd = { '/home/wahaj/.local/share/nvim/mason/bin/jdtls' },
+  root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
+}
+require('jdtls').start_or_attach(config)
+
+-- local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
+-- local workspace_dir = vim.fn.expand '~/.cache/jdtls-workspace/' .. project_name
+--
+-- -- Find the root of the current project
+-- local root_markers = { 'gradlew', '.git', 'settings.gradle.kts', 'settings.gradle' }
+-- local root_dir = require('jdtls.setup').find_root(root_markers)
+--
+-- local javafx_path = '/usr/share/java/java-openjfx/' -- Update this path
+--
+-- local config = {
+--   cmd = {
+--     '/home/wahaj/.local/share/nvim/mason/bin/jdtls',
+--     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+--     '-Dosgi.bundles.defaultStartLevel=4',
+--     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+--     '-Dlog.protocol=true',
+--     '-Dlog.level=ALL',
+--     '-Xms1g',
+--     '-Xmx2G',
+--     '-jar',
+--     '/home/wahaj/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar',
+--     '-configuration',
+--     '/home/wahaj/.local/share/nvim/mason/packages/jdtls/config_linux',
+--     -- '-data',
+--     -- workspace_dir,
+--   },
+--
+--   -- Add JavaFX specific settings
+--   settings = {
+--     java = {
+--       configuration = {
+--         runtimes = {
+--           {
+--             name = 'JavaSE-24',
+--             path = '/usr/lib/jvm/java-24-openjdk/',
+--           },
+--           {
+--             name = 'JavaSE-23',
+--             path = '/usr/lib/jvm/java-23-openjdk',
+--           },
+--         },
+--       },
+--       project = {
+--         referencedLibraries = {
+--           javafx_path .. '*.jar',
+--         },
+--       },
+--       import = {
+--         gradle = {
+--           enabled = true,
+--           wrapper = {
+--             enabled = true,
+--           },
+--         },
+--       },
+--     },
+--   },
+--   root_dir = root_dir,
+-- }
+--
+-- -- Start the language server
+-- require('jdtls').start_or_attach(config)

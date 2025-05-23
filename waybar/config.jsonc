@@ -2,7 +2,7 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 10, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -13,9 +13,9 @@
         // "custom/media"
         "sway/window"
     ],
-    "modules-center": [
-        "custom/battery"
-    ],
+    // "modules-center": [
+    //     "custom/battery"
+    // ],
     "modules-right": [
         "mpd",
         // "idle_inhibitor",
@@ -213,7 +213,7 @@
     },
     "custom/power": {
         "format" : "⏻ ",
-        "on-click-right":"$HOME/.config/rofi/scripts/powermenu_t6",
+        "on-click-right":"wlogout",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
