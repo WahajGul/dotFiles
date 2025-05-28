@@ -171,7 +171,8 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{essid} {ipaddr}/{cidr}"
+        "format-alt": "{essid} {ipaddr}/{cidr}",
+        "on-click-right":"~/.config/wofi/scripts/wifiMenu.sh",
     },
 
 "sway/window": {

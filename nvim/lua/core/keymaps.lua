@@ -78,3 +78,4 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- Compile and run C program
 -- Compile and run C program
 vim.keymap.set('n', '<F5>', ':w<CR>:!gcc % -o %:r<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'gK', vim.lsp.buf.hover, { desc = '[C]ode [H]over Documentation' })

@@ -32,7 +32,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # Application launcher (Wayland-friendly rofi)
-bindsym $mod+d exec ~/.config/rofi/scripts/launcher_t7
+bindsym $mod+d exec wofi --show=drun
+bindsym $mod+Shift+d exec wofi --show=run
 
 # Focus movement
 bindsym $mod+h focus left
@@ -67,6 +68,11 @@ bindsym $mod+Shift+b exec $HOME/personalScripts/toggleEwwSideBar.sh
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+
+
+# wlogout
+    bindsym alt+f4 exec wlogout
+
 
 # Workspaces
 set $ws1 "1"
@@ -122,8 +128,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Startup Apps (Wayland-compatible)
-# exec_always --no-startup-id killall swaybg 
-exec_always --no-startup-id swaybg -i ~/Pictures/Wallpaper-Bank/mountains.jpg
+# Run the random wallpaper script
+# exec_always ~/Scripts/wallpaper.sh
+bindsym $mod+comma exec ~/Scripts/wallpaperChooser.sh
+
+exec_always --no-startup-id swaybg -i ~/Pictures/Wallpaper-Bank/mountFuji.png
+
+
 # exec_always --no-startup-id waybar
 exec_always --no-startup-id nm-applet
 # exec_always --no-startup-id gnome-keyring-daemon --start --components=secrets

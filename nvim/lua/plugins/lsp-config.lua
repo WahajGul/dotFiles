@@ -60,19 +60,12 @@ return {
       --   setup_func()
       -- end
 
-      -- Common LSP setup function
-      local function setup_lsp(server_name)
-        lspconfig[server_name].setup {
-          capabilities = capabilities,
-        }
-      end
-
       require('mason').setup()
 
       -- require('mason-lspconfig').setup {
       --   automatic_installation = true,
       --   ensure_installed = {
-      --     'jdtls',
+      --     'texlab',
       --   },
       -- }
 
@@ -88,6 +81,7 @@ return {
         'dockerls',
         'emmet_language_server',
         'jsonls',
+        'texlab',
         -- 'jdtls', -- is intentionally excluded here, handled by nvim-java plugin
       }
 
@@ -100,6 +94,13 @@ return {
         },
       }
 
+      -- Common LSP setup function
+      local function setup_lsp(server_name)
+        lspconfig[server_name].setup {
+          capabilities = capabilities,
+        }
+      end
+
       -- Setup each server
       for _, server in ipairs(servers) do
         setup_lsp(server)
@@ -107,6 +108,31 @@ return {
 
       require('java').setup()
       require('lspconfig').jdtls.setup {}
+
+      require('lspconfig').texlab.setup {
+        settings = {
+          texlab = {
+            build = {
+              executable = 'latexmk',
+              args = { '-pdf', '-interaction=nonstopmode', '-synctex=1', '%f' },
+              onSave = true,
+            },
+            chktex = {
+              onEdit = true,
+              onOpenAndSave = true,
+            },
+            diagnosticsDelay = 300,
+            latexFormatter = 'latexindent',
+            latexindent = { modifyLineBreaks = true },
+          },
+        },
+        on_attach = function(client, bufnr)
+          local function buf_set_option(...)
+            vim.api.nvim_buf_set_option(bufnr, ...)
+          end
+          buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+        end,
+      }
 
       vim.lsp.enable(servers)
       -- Configure diagnostics
@@ -134,8 +160,6 @@ return {
         },
       }
 
-
-
       vim.diagnostic.config(default_diagnostic_config)
 
       for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), 'signs', 'values') or {}) do
@@ -143,11 +167,11 @@ return {
       end
 
       -- Keymappings
-      vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, { desc = '[C]ode [H]over Documentation' })
-      vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { desc = '[C]ode Goto [D]efinition' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
-      vim.keymap.set('n', '<leader>cR', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
-      vim.keymap.set('n', '<leader>cD', vim.lsp.buf.declaration, { desc = '[C]ode Goto [D]eclaration' })
+      vim.keymap.set('n', 'gK', vim.lsp.buf.hover, { desc = '[C]ode [H]over Documentation' })
+      -- vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { desc = '[C]ode Goto [D]efinition' })
+      -- vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ctions' })
+      -- vim.keymap.set('n', '<leader>cR', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
+      -- vim.keymap.set('n', '<leader>cD', vim.lsp.buf.declaration, { desc = '[C]ode Goto [D]eclaration' })
 
       -- If you have telescope, you can uncomment these
       -- vim.keymap.set("n", "<leader>cr", require("telescope.builtin").lsp_references, { desc = "[C]ode Goto [R]eferences" })

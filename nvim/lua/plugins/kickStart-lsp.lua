@@ -215,6 +215,7 @@ return {
       clang_format = {},
       emmet_language_server = {},
       jdtls = {},
+      texlab = {},
 
       --
 
