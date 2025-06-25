@@ -24,6 +24,13 @@ return { -- Autocompletion
           end,
         },
       },
+      config = function()
+        require('luasnip.loaders.from_lua').load { paths = '/home/wahaj/.config/nvim/LuaSnip/' }
+        require('luasnip').config.set_config {
+          enable_autosnippets = true,
+          store_selection_keys = '<Tab>',
+        }
+      end,
     },
     'saadparwaiz1/cmp_luasnip',
 
@@ -33,6 +40,7 @@ return { -- Autocompletion
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    'octaltree/cmp-look',
   },
   config = function()
     -- See `:help cmp`
@@ -160,6 +168,15 @@ return { -- Autocompletion
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
+        {
+          name = 'look',
+          keyword_length = 2,
+          option = {
+            convert_case = true,
+            loud = true,
+            -- dict = '/usr/share/dict/words',
+          },
+        },
       },
       formatting = {
         fields = { 'kind', 'abbr', 'menu' },
@@ -167,6 +184,7 @@ return { -- Autocompletion
           vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
           vim_item.menu = ({
             nvim_lsp = '[LSP]',
+            look = '[Dict]',
             luasnip = '[Snippet]',
             buffer = '[Buffer]',
             path = '[Path]',

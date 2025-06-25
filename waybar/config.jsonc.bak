@@ -7,11 +7,11 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "niri/workspaces",
+        "sway/workspaces",
         "sway/mode",
         "sway/scratchpad",
         // "custom/media"
-        "niri/window"
+        "sway/window"
     ],
     // "modules-center": [
     //     "custom/battery"
@@ -179,26 +179,6 @@
     "format": "{app_id}",
     "max-length": 50,
     "tooltip": false
-},
-"niri/workspaces": {
-	"format": "{icon}",
-	// "format-icons": {
-	// 	// Named workspaces
-	// 	// (you need to configure them in niri)
-	// 	"browser": "",
-	// 	"discord": "",
-	// 	"chat": "<b></b>",
-	// 	// Icons by state
-	// 	"active": "",
-	// 	"default": ""
-	// }
-},
-"niri/window": {
-	"format": "{app_id}",
-	// "rewrite": {
-	// 	"(.*) - Mozilla Firefox": "🌎 $1",
-	// 	"(.*) - zsh": "> [$1]"
-	// }
 },
 
     "pulseaudio": {
