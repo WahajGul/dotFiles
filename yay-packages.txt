@@ -1,0 +1,13 @@
+emmet-language-server
+latex-mk
+scenefx0.3
+snap-pac-grub
+snapper-gui-git
+swayfx
+swaylock-effects
+ttf-wps-fonts
+visual-studio-code-bin
+wlogout
+wps-office-bin
+yay
+zen-browser-bin
